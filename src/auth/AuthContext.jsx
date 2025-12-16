@@ -10,6 +10,8 @@ import { createContext, useContext, useState } from "react";
 // which are defined in a file named .env
 const API = import.meta.env.VITE_API;
 
+//const API = "https://fitnesstrac-kr.herokuapp.com/api";
+
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {

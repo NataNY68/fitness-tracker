@@ -35,3 +35,26 @@ export async function createActivity(token, activity) {
     throw Error(result.message);
   }
 }
+
+/**
+   Delete an activity
+   */
+export const deleteActivity = async (token, id) => {
+  if (!token) {
+    throw new Error(
+      "You must be the same user who created this activity to perform this action"
+    );
+  }
+
+  const response = await fetch(API + "/activities/" + `${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const result = await response.json();
+    throw new Error(result.message);
+  }
+};
